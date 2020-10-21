@@ -1,16 +1,18 @@
 import React from 'react';
-import { MovieItem } from './movieItem';
+import { MovieItem } from './movieItem'; //import movieItem component
 
 export class Movies extends React.Component {
 
     render() {
-        //map splits a collection apart into individual parts
+        //map splits a collection apart into individual items
         //was created for distributed computing, so large collections could be processed on mutliple computers
-        //pass individual object into MovieItem
+        //pass items from collection into MovieItem
         //creates new component for each item in array
         // => is an anonymous method, we create a function without signature
-        return this.props.moviesObj.map((movie) => {
-                return <MovieItem myMovie = {movie}></MovieItem>
+        //The parameter holds the current item as it goes through the collection, like a foreach statement.
+        //We create an object to hold these details (movieObjFromMovies) and pass it into movieItem
+        return this.props.moviesObjFromRead.map((currentMovie) => {
+                return <MovieItem movieObjFromMovies = {currentMovie}></MovieItem>
             }
         );
 

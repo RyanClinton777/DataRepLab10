@@ -3,7 +3,7 @@ import '../App.css'; // ../ is parent directory
 import { Movies } from './Movies';
 
 export class Read extends React.Component {
-    //state is the object we use to hold data, so we can pass to between components
+    //state is the object we use to hold data, so we can pass between components
     state = {
         //we want to pass this data into the movies component
         moviesArr: [
@@ -32,14 +32,14 @@ export class Read extends React.Component {
             
     }
 
-    //render is where the business logic happens
+    //render is where the logic happens
 	render() {
 		return(
 			//css file name
 			<div className="App">
 				<h1> Hello from Read component.</h1>
-                {/* create object, use it to pass our array into the movies component */}
-                <Movies moviesObj = {this.state.moviesArr}></Movies>
+                {/* create object, use it to pass our array into the a movies component */}
+                <Movies moviesObjFromRead = {this.state.moviesArr}></Movies>
 			</div>
 		)
 	}

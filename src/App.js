@@ -1,8 +1,7 @@
 import React from 'react';
 import './App.css';
 //import our components
-//to auto import, type the name in the code and let the autocomplete window pop up...
-// - and select auto import
+//to auto import, type the name in the code and let the autocomplete window pop up and select auto import
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { Content } from './components/Content';

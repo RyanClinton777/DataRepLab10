@@ -1,13 +1,29 @@
 import React from 'react';
+import Card from "react-bootstrap/Card"; //for bootstrap card
 
 export class MovieItem extends React.Component {
 
     render() {
         return(
             <div>
-                <h3>{this.props.myMovie.Title}</h3>
-                <p>{this.props.myMovie.Year}</p>
-                <img src = {this.props.myMovie.Poster} width="200" height="300"></img>
+                {
+                /* <h3>{this.props.movieObjFromMovies.Title}</h3>
+                <p>{this.props.movieObjFromMovies.Year}</p>
+                <img src = {this.props.movieObjFromMovies.Poster} width="200" height="300"></img> 
+                */
+                }
+
+                {/* Bootstrap card to display moveitem details - Title, Poster and Year */}
+                <Card>
+                    <Card.Header> {this.props.movieObjFromMovies.Title} </Card.Header>
+                    <Card.Body>
+                        {/* <blockquote> tags are used to signify that a section is quoted from another source.*/}
+                                    <img src={this.props.movieObjFromMovies.Poster}></img>
+                                    <footer>
+                                        {this.props.movieObjFromMovies.Year} 
+                                    </footer>
+                    </Card.Body>
+                </Card>
             </div>
         );
     }
