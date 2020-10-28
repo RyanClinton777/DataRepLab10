@@ -19,8 +19,6 @@ import {Navbar, Nav }from 'react-bootstrap';
 //BrowserRouter contains all of this
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-
-
 //converted from function to class, added render() to comply with Component
 //Renders Navbar, which can switch between components
 class App extends React.Component {

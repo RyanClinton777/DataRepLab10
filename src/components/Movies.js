@@ -11,6 +11,7 @@ export class Movies extends React.Component {
         // => is an anonymous method, we create a function without signature
         //The parameter holds the current item as it goes through the collection, like a foreach statement.
         //We create an object to hold these details (movieObjFromMovies) and pass it into movieItem
+        //key={currentMovie/ImdbID} ebfore var name you get a warning without a unique key/ID
         return this.props.moviesObjFromRead.map((currentMovie) => {
                 return <MovieItem movieObjFromMovies = {currentMovie}></MovieItem>
             }
