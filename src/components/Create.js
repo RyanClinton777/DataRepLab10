@@ -1,5 +1,6 @@
 import React from 'react'; //leave class blank and type source for autcomplete options
 import '../App.css'; // ../ is parent directory
+import axios from 'axios' //import axious for promises
 
 export class Create extends React.Component {
 
@@ -49,6 +50,18 @@ onSubmit(e) {
 			"\nYear: "+this.state.year+
 			"\nPoster: "+this.state.poster
 	);
+
+	//send data to server using POST
+	//put data into object
+	const newMovie = {
+		Title:this.state.title,
+		Year:this.state.year,
+		Poster:this.state.poster
+	};
+	//send object in post - URL, Data object
+	axios.post('http://localhost:4000/api/movies', newMovie)
+	.then(response => console.log(response.data))
+	.catch(error => console.log(error));
 }
 
 	render() {

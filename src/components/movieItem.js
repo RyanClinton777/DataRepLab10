@@ -15,12 +15,12 @@ export class MovieItem extends React.Component {
 
                 {/* Bootstrap card to display moveitem details - Title, Poster and Year */}
                 <Card>
-                    <Card.Header> {this.props.movieObjFromMovies.Title} </Card.Header>
+                    <Card.Header> {this.props.movieObjFromMovies.title} </Card.Header>
                     <Card.Body>
                         {/* <blockquote> tags are used to signify that a section is quoted from another source.*/}
-                                    <img src={this.props.movieObjFromMovies.Poster}></img>
+                                    <img src={this.props.movieObjFromMovies.poster}></img>
                                     <footer>
-                                        {this.props.movieObjFromMovies.Year} 
+                                        {this.props.movieObjFromMovies.year} 
                                     </footer>
                     </Card.Body>
                 </Card>
