@@ -1,4 +1,4 @@
-const express = require('express') //importing express
+const express = require('express') //importing expressJS - allows us to concisely handle get and post requests like: app.get('/whatever', (req, res) => {});
 const app = express()
 const port = 4000
 const cors = require('cors'); //Allows cross platform requests
@@ -6,7 +6,7 @@ const bodyParser = require('body-parser') //body parser for parsing HTTP body
 const mongoose = require("mongoose"); //MongoDB objet modelling tool. Designed for AJAX, supports promises and callbacks.
 
 //mongodb+srv://admin:root@cluster0.fatuj.mongodb.net/<dbname>?retryWrites=true&w=majority
-//Obviously would leave put this here in a real project, just doing it for convenience since this is just a lab
+//Obviously would not put this here in a real project, just doing it for convenience since this is just a lab
 
 //---cors prevention code - permission to make cross platform requests
 //This is a security risk
@@ -33,7 +33,7 @@ var movieSchema = new mongoose.Schema({
     year:String,
     poster:String
 });
-//create movie model - ("name of collection", schema)
+//create movie model - ("name of collection on database", schema variable)
 //We use this to interact with the database
 var movieModel = mongoose.model("movie", movieSchema);
 
@@ -141,6 +141,17 @@ app.post('/name', (req, res) => {
     //we get the data from req.body for post, instead of query.
     res.send("[POST] Hello " + req.body.firstname + " " + req.body.lastname);
 })
+
+//app.put();
+
+app.delete("/api/movies/:id", (req, res) => {
+    console.log("Delete movie: "+req.params.id);
+    //takes ID of item to delete, and callback function
+    movieModel.findByIdAndDelete(req.params.id, (err, data) => {
+        res.send(data); //send back some data, don't really need it
+        //Can handle error in here as well.
+    });
+});
 
 //configuration of the server
 //app.listen starts server, and we pass in the port
