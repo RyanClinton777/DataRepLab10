@@ -7,6 +7,7 @@ import { Footer } from './components/Footer';
 import { Content } from './components/Content';
 import { Read } from './components/Read';
 import { Create } from './components/Create';
+import { Edit } from './components/Edit';
 //react-bootstrap stylesheet
 import 'bootstrap/dist/css/bootstrap.min.css';
 //react-bootstrap components
@@ -33,6 +34,7 @@ class App extends React.Component {
               <Nav.Link href="/">Content</Nav.Link>
               <Nav.Link href="/read">Read</Nav.Link>
               <Nav.Link href="/create">Create</Nav.Link>
+              <Nav.Link href="/edit">Edit</Nav.Link>
             </Nav>
           </Navbar>
 
@@ -40,6 +42,8 @@ class App extends React.Component {
             <Route path='/' component={Content} exact ></Route>
             <Route path='/read' component={Read} ></Route>
             <Route path='/create' component={Create} ></Route>
+            {/* Edit/id of the movie we want to edit. :param in JS. */}
+            <Route path='/edit/:id' component={Edit} ></Route>
           </Switch>
 
         </div>

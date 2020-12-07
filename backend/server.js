@@ -153,6 +153,21 @@ app.delete("/api/movies/:id", (req, res) => {
     });
 });
 
+//Update a movie, identified by its id
+//put for updates
+//note: always look for missing / in urls if 404 error pops up
+app.put('/api/movies/:id', (req, res) => {
+    console.log("Update movie: "+req.params.id);
+    console.log(req.body);
+
+    //find document by id and update it using the new data in req.body
+    movieModel.findByIdAndUpdate(req.params.id, req.body, {new:true},
+        (err, data)=> {
+            //send the data
+            res.send(data);
+        })
+});
+
 //configuration of the server
 //app.listen starts server, and we pass in the port
 //server listens for http requests being sent to it

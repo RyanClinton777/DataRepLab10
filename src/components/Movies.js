@@ -12,8 +12,9 @@ export class Movies extends React.Component {
         //The parameter holds the current item as it goes through the collection, like a foreach statement.
         //We create an object to hold these details (movieObjFromMovies) and pass it into movieItem
         //key={currentMovie/ImdbID} ebfore var name you get a warning without a unique key/ID
+        //To call read.ReloadData from MovieItem (subclass of this one), we have passed down reloadData object, and now we will chain it again, down to movieItem. 
         return this.props.moviesObjFromRead.map((currentMovie) => {
-                return <MovieItem movieObjFromMovies = {currentMovie}></MovieItem>
+                return <MovieItem movieObjFromMovies = {currentMovie} ReloadData = {this.props.ReloadData}></MovieItem>
             }
         );
 
