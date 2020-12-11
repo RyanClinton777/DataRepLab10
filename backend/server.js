@@ -4,6 +4,7 @@ const port = 4000
 const cors = require('cors'); //Allows cross platform requests
 const bodyParser = require('body-parser') //body parser for parsing HTTP body
 const mongoose = require("mongoose"); //MongoDB objet modelling tool. Designed for AJAX, supports promises and callbacks.
+const path = require("path"); //include path for filepath operations
 
 //mongodb+srv://admin:root@cluster0.fatuj.mongodb.net/<dbname>?retryWrites=true&w=majority
 //Obviously would not put this here in a real project, just doing it for convenience since this is just a lab
@@ -18,6 +19,10 @@ app.use(function (req, res, next) {
         "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
+
+//configuration for the build, telling express where to find the build and static folders
+app.use(express.static(path.join(__dirname, "../build")));
+app.use("/static", express.static(path.join(__dirname, "build//static")));
 
 //---body parser code
 app.use(bodyParser.urlencoded({ extended: false })) // parse application/x-www-form-urlencoded
@@ -166,6 +171,12 @@ app.put('/api/movies/:id', (req, res) => {
             //send the data
             res.send(data);
         })
+});
+
+//"*" path = any URL not accounted for above, send index file (from build)
+app.get("*", (req, res) => {
+    // "/.." goes up a directory, so it goes back out of backend, >build>index.html
+    res.sendFile(path.join(__dirname+"/../build/index.html"));
 });
 
 //configuration of the server
